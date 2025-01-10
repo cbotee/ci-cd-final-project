@@ -1,6 +1,7 @@
 ---
 apiVersion: tekton.dev/v1beta1
-kind:
+kind: Task
+metadata:
   name: cleanup
 spec:
   description: This task will clean up a workspace by deleting all the files.
@@ -35,7 +36,8 @@ spec:
         fi
 ---
 apiVersion: tekton.dev/v1beta1
-kind:
+kind: Task
+metadata:
   name: nose
 spec:
   workspaces:
@@ -56,3 +58,5 @@ spec:
         python -m pip install --upgrade pip wheel
         pip install -r requirements.txt
         nosetests $(params.args)
+        
+        
